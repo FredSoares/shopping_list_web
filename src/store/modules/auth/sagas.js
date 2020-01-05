@@ -67,9 +67,14 @@ export function setToken({ payload }) {
   }
 }
 
+// redirect user to root after log out
+export function signOut() {
+  history.push('/');
+}
 // export all saga
 export default all([
   takeLatest('persist/REHYDRATE', setToken),
   takeLatest('@auth/SIGN_IN_REQUEST', signIn),
   takeLatest('@auth/SIGN_UP_REQUEST', signUp),
+  takeLatest('@auth/SIGN_OUT', signOut),
 ]);
